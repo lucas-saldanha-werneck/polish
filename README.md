@@ -77,11 +77,12 @@ The skill is one file, `skills/polish/SKILL.md`. It tells Claude to:
 3. Check each change for breakage (grep for every use, run the test suite as a baseline, look for
    text other systems read, flag external contracts) and mark it safe, safe with an adjustment, or
    breaks. A change it could not check is marked "not checked", with the reason.
-4. Write a plan of small, reversible steps (in a git repo, a `polish/<date>` branch with one commit
-   per step).
+4. Write a plan of small, reversible steps, each naming the earlier steps it depends on (in a git
+   repo, a `polish/<date>` branch with one commit per step).
 5. Show the report, ask what to apply, and end the turn.
-6. Apply only what you picked, running the tests after each step and undoing any step that turns
-   them red.
+6. Apply only what you picked, running the tests after each step. A step that turns them red is
+   undone, and the later steps that depend on it are skipped and reported as pending. At the end it
+   runs the full test suite once more and compares it with the baseline.
 
 ## Optional requirements
 
@@ -96,9 +97,13 @@ None are needed. Without them the skill still works, with less evidence:
 ## Test
 
 ```
-sh tests/test_skill.sh          # checks the JSON files and the SKILL.md frontmatter
+sh tests/test_skill.sh          # checks the JSON files, the SKILL.md frontmatter and rules
 sh tests/test_skill.sh --load   # also loads the plugin in a headless Claude Code session
 ```
+
+The `--load` check reads the session's start-up event and passes only if it lists the skill
+`polish:polish`. It does not trust what the model writes. It needs `claude` on your `PATH` and
+uses one short model turn.
 
 ## Uninstall
 

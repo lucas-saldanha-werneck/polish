@@ -46,7 +46,7 @@ Didn't check? Write "not checked: <why>". Never mark a change safe by deduction.
 
 ### 4. Implementation plan
 - Order: low-risk safe changes first, then safe-with-adjustment, then anything that touches architecture.
-- Small, reversible steps. Each step says: which changes (ids), how to test afterwards (command, before/after screenshot), how to undo (its own commit or a backup).
+- Small, reversible steps. Each step says: which changes (ids), depends on: which earlier steps it needs ("none" if it stands alone), how to test afterwards (command, before/after screenshot), how to undo (its own commit or a backup).
 - In a git repo: a new branch `polish/<date>`, one commit per step.
 
 ### 5. Show and stop
@@ -57,5 +57,6 @@ Didn't check? Write "not checked: <why>". Never mark a change safe by deduction.
 
 ### 6. Implement (only what the user picked)
 - Follow the plan step by step. After each step: run the tests, compare with the baseline, screenshot the screen you touched.
-- If a test turns red or the screen got worse: undo the step, note it, move to the next one.
+- If a test turns red or the screen got worse: undo the step and note it. Then skip every later step that depends on it, mark each one pending with the reason, and go on with the steps that don't.
+- When the steps are done, run the full test suite once more and compare it with the baseline. Anything worse than the baseline is not done: undo the step that caused it or report it as broken.
 - At the end: before/after screenshots, test results (real output), what was done, and what is still pending with the reason (or "nothing pending").
