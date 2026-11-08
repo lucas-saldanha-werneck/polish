@@ -121,7 +121,7 @@ uses one short model turn.
 
 ## Credits
 
-The review standard comes from two posts. Vox ([@Voxyz_ai](https://x.com/Voxyz_ai/status/2113254050170843418)) wrote the two AGENTS.md lines: cut taglines, helper text and secondary labels, and weigh UX, DX and AX together. Ram Maheshwari ([LinkedIn post](https://www.linkedin.com/posts/rammcodes_turns-out-the-secret-to-better-ai-generated-activity-7523265270833143808-rwbC)) added the "as perfect as Linear's website or Apple Notes" opening. The skill name and the review flow are mine.
+The review standard is a prompt by Vox ([@Voxyz_ai](https://x.com/Voxyz_ai/status/2117281830449942825), 2 Nov 2026): the "as perfect as Linear's website or Apple Notes" opening, cutting taglines, helper text and secondary labels, and weighing UX, DX and AX together. An earlier Vox post ([22 Oct 2026](https://x.com/Voxyz_ai/status/2113254050170843418)) had the first version of those lines. The skill name and the review flow are mine.
 
 MIT License. Copyright (c) 2026 Lucas Saldanha Werneck.
 
