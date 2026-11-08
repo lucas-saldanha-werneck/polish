@@ -1,0 +1,15 @@
+{
+  "name": "polish",
+  "description": "A simplicity review skill for Claude Code.",
+  "owner": {
+    "name": "Lucas Saldanha Werneck",
+    "url": "https://github.com/lucas-saldanha-werneck"
+  },
+  "plugins": [
+    {
+      "name": "polish",
+      "source": "./",
+      "description": "A skill for a simplicity review in the style of Linear or Apple Notes: lists every change it would make with its UX, DX and AX gain, checks what each one would break, plans it, and changes nothing until you pick."
+    }
+  ]
+}
