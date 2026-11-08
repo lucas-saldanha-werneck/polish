@@ -119,6 +119,10 @@ uses one short model turn.
 - Tested with Claude Code 2.1.319 in the terminal, on macOS. Not tested in the desktop app or on
   other systems.
 
+## Credits
+
+The review standard comes from two posts. Vox ([@Voxyz_ai](https://x.com/Voxyz_ai/status/2113254050170843418)) wrote the two AGENTS.md lines: cut taglines, helper text and secondary labels, and weigh UX, DX and AX together. Ram Maheshwari ([LinkedIn post](https://www.linkedin.com/posts/rammcodes_turns-out-the-secret-to-better-ai-generated-activity-7523265270833143808-rwbC)) added the "as perfect as Linear's website or Apple Notes" opening. The skill name and the review flow are mine.
+
 MIT License. Copyright (c) 2026 Lucas Saldanha Werneck.
 
 Built with Claude Code
