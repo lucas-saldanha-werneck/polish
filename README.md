@@ -41,8 +41,8 @@ for each change, and how each check was done), a list of discarded ideas and a s
 ## Install
 
 ```
-/plugin marketplace add lucas-saldanha-werneck/polish
-/plugin install polish@polish
+/plugin marketplace add lucas-saldanha-werneck/claude-plugins
+/plugin install polish@lucas-plugins
 ```
 
 ## Use
@@ -94,7 +94,7 @@ None are needed. Without them the skill still works, with less evidence:
 | An HTML report skill such as `lavish` | show the report as a page | writes `polish-report.md` and puts the tables in chat |
 | The `AskUserQuestion` tool | ask what to apply with buttons | asks in plain text |
 
-## Test
+## Tests
 
 ```
 sh tests/test_skill.sh          # checks the JSON files, the SKILL.md frontmatter and rules
@@ -108,8 +108,7 @@ uses one short model turn.
 ## Uninstall
 
 ```
-/plugin uninstall polish@polish
-/plugin marketplace remove polish
+/plugin uninstall polish@lucas-plugins
 ```
 
 ## Limits
@@ -123,6 +122,8 @@ uses one short model turn.
 
 The review standard is a prompt by Vox ([@Voxyz_ai](https://x.com/Voxyz_ai/status/2117281830449942825), 2 Nov 2026): the "as perfect as Linear's website or Apple Notes" opening, cutting taglines, helper text and secondary labels, and weighing UX, DX and AX together. An earlier Vox post ([22 Oct 2026](https://x.com/Voxyz_ai/status/2113254050170843418)) had the first version of those lines. The skill name and the review flow are mine.
 
-MIT License. Copyright (c) 2026 Lucas Saldanha Werneck.
+## License
+
+MIT. See [LICENSE](LICENSE).
 
 Built with Claude Code
