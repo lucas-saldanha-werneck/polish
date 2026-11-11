@@ -42,7 +42,7 @@ for each change, and how each check was done), a list of discarded ideas and a s
 
 ```
 /plugin marketplace add lucas-saldanha-werneck/claude-plugins
-/plugin install polish@lucas-plugins
+/plugin install polish@lucas-tools
 ```
 
 ## Use
@@ -108,7 +108,7 @@ uses one short model turn.
 ## Uninstall
 
 ```
-/plugin uninstall polish@lucas-plugins
+/plugin uninstall polish@lucas-tools
 ```
 
 ## Limits
