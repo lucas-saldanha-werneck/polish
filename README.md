@@ -41,7 +41,7 @@ for each change, and how each check was done), a list of discarded ideas and a s
 ## Install
 
 ```
-/plugin marketplace add lucas-saldanha-werneck/claude-plugins
+/plugin marketplace add lucas-saldanha-werneck/lucas-tools
 /plugin install polish@lucas-tools
 ```
 
