@@ -41,7 +41,19 @@ grep -q 'skip every later step that depends on it' "$SKILL" || fail "SKILL.md ro
 grep -q 'run the full test suite once more' "$SKILL" || fail "SKILL.md has no final full test run"
 echo "ok: SKILL.md rollback rules"
 
+# Undoing a step must never take the user's uncommitted work with it.
+grep -q 'git status' "$SKILL" || fail "SKILL.md does not check for uncommitted work before changing files"
+grep -q 'never `git checkout -- .`' "$SKILL" || fail "SKILL.md does not forbid undoing with a blanket checkout or reset"
+echo "ok: SKILL.md keeps uncommitted work"
+
+# Nothing is written into the target before the user picks.
+grep -q 'polish-report.md` in the target' "$SKILL" && fail "SKILL.md writes the report into the target before the user picks"
+grep -q 'never in the target' "$SKILL" || fail "SKILL.md does not keep the report out of the target"
+echo "ok: SKILL.md report stays out of the target"
+
 # The load check must fail when the skill is missing, whatever the model says.
+# The init event comes before any model call, so it works without a login
+# (the session then fails, which is fine: only the init event is read).
 echo 'No skills containing polish are available.' | skill_loaded && fail "load check accepts a plain-text answer"
 echo '{"type":"system","subtype":"init","skills":["other:polish-like"]}' | skill_loaded && fail "load check accepts a missing skill"
 echo '{"type":"system","subtype":"init","skills":["polish:polish"]}' | skill_loaded || fail "load check rejects a loaded skill"
@@ -49,7 +61,7 @@ echo "ok: load check"
 
 if [ "$1" = "--load" ]; then
   out=$(claude -p --setting-sources project --plugin-dir "$ROOT" --output-format stream-json --verbose \
-    --max-turns 1 "Reply with the word ok.")
+    --max-turns 1 "Reply with the word ok." 2>/dev/null || true)
   echo "$out" | skill_loaded || fail "skill polish:polish not registered"
   echo "ok: skill loads (polish:polish)"
 fi
