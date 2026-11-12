@@ -35,7 +35,7 @@ What should I apply?
 - Pick by id
 ```
 
-It also wrote `polish-report.md` next to the page, with the full table (UX, DX and AX gain and risk
+It also wrote `polish-report.md` (since 0.1.5 in the scratchpad, never in the reviewed folder), with the full table (UX, DX and AX gain and risk
 for each change, and how each check was done), a list of discarded ideas and a step-by-step plan.
 
 ## Install
@@ -80,8 +80,9 @@ The skill is one file, `skills/polish/SKILL.md`. It tells Claude to:
 4. Write a plan of small, reversible steps, each naming the earlier steps it depends on (in a git
    repo, a `polish/<date>` branch with one commit per step).
 5. Show the report, ask what to apply, and end the turn.
-6. Apply only what you picked, running the tests after each step. A step that turns them red is
-   undone, and the later steps that depend on it are skipped and reported as pending. At the end it
+6. Apply only what you picked, after checking `git status` (uncommitted work is committed or
+   stashed first, with your OK), running the tests after each step. A step that turns them red is
+   undone by reverting its own commit, and the later steps that depend on it are skipped and reported as pending. At the end it
    runs the full test suite once more and compares it with the baseline.
 
 ## Optional requirements
@@ -91,7 +92,7 @@ None are needed. Without them the skill still works, with less evidence:
 | If you have | It uses it to | Without it |
 |---|---|---|
 | A way to run and screenshot the app (Playwright, a browser tool, a run skill) | look at each screen before and after | reviews the code only and says so in the report |
-| An HTML report skill such as `lavish` | show the report as a page | writes `polish-report.md` and puts the tables in chat |
+| An HTML report skill such as `lavish` | show the report as a page | writes `polish-report.md` in the scratchpad and puts the tables in chat |
 | The `AskUserQuestion` tool | ask what to apply with buttons | asks in plain text |
 
 ## Tests
@@ -102,8 +103,9 @@ sh tests/test_skill.sh --load   # also loads the plugin in a headless Claude Cod
 ```
 
 The `--load` check reads the session's start-up event and passes only if it lists the skill
-`polish:polish`. It does not trust what the model writes. It needs `claude` on your `PATH` and
-uses one short model turn.
+`polish:polish`. It does not trust what the model writes. It needs `claude` on your `PATH`; the
+start-up event comes before any model call, so it also works without a login (CI runs it that way,
+with Claude Code 2.1.322).
 
 ## Uninstall
 

@@ -47,16 +47,17 @@ Didn't check? Write "not checked: <why>". Never mark a change safe by deduction.
 ### 4. Implementation plan
 - Order: low-risk safe changes first, then safe-with-adjustment, then anything that touches architecture.
 - Small, reversible steps. Each step says: which changes (ids), depends on: which earlier steps it needs ("none" if it stands alone), how to test afterwards (command, before/after screenshot), how to undo (its own commit or a backup).
-- In a git repo: a new branch `polish/<date>`, one commit per step.
+- In a git repo: a new branch `polish/<date>`, one commit per step, so undoing a step is undoing its own commit.
 
 ### 5. Show and stop
-- Write the report: purpose in one sentence, table of changes by layer, before screenshots, the check column, the plan, the discarded list. If an HTML report tool is available (for example the `lavish` skill), use it; otherwise write a Markdown file (`polish-report.md` in the target folder, or the scratchpad) and show the tables in chat.
+- Write the report: purpose in one sentence, table of changes by layer, before screenshots, the check column, the plan, the discarded list. If an HTML report tool is available (for example the `lavish` skill), use it; otherwise write a Markdown file `polish-report.md` in the scratchpad (never in the target: nothing in it changes before the user picks) and show the tables in chat.
 - In chat: a short summary (how many changes, how many safe / safe with adjustment / breaks, where the report is).
 - Ask what to apply: "all safe", "safe + safe with adjustment", or "I'll pick by id". Use the `AskUserQuestion` tool if it is available; otherwise ask in plain text. For a big visual change, describe 2 or 3 options in text first.
 - **End the turn. Implement nothing in this step.**
 
 ### 6. Implement (only what the user picked)
+- Before the first change, run `git status` in the target. Uncommitted changes there are the user's work: ask whether to commit or stash them first (`git stash push -m "before polish"`), and do not start until the tree is clean. Not a git repo: back up each file before you touch it.
 - Follow the plan step by step. After each step: run the tests, compare with the baseline, screenshot the screen you touched.
-- If a test turns red or the screen got worse: undo the step and note it. Then skip every later step that depends on it, mark each one pending with the reason, and go on with the steps that don't.
+- If a test turns red or the screen got worse: undo the step and note it. Undo only that step: revert its own commit, or restore the files it touched from their backup; never `git checkout -- .`, `git reset --hard` or `git clean`, which also throw away work that is not the step's. Then skip every later step that depends on it, mark each one pending with the reason, and go on with the steps that don't.
 - When the steps are done, run the full test suite once more and compare it with the baseline. Anything worse than the baseline is not done: undo the step that caused it or report it as broken.
 - At the end: before/after screenshots, test results (real output), what was done, and what is still pending with the reason (or "nothing pending").

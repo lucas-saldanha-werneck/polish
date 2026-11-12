@@ -12,4 +12,10 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v4
-      - run: bash tests/test_skill.sh
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm i -g @anthropic-ai/claude-code@2.1.322
+      # --load starts a headless session; no login is needed to see the skill
+      # listed in its init event.
+      - run: bash tests/test_skill.sh --load
