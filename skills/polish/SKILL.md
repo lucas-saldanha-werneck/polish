@@ -1,12 +1,18 @@
 ---
 name: polish
-description: Simplicity review of an app, site, screen or codebase in the style of Linear or Apple Notes (simple purpose, simple architecture, simple design, simple implementation). Lists every change it would make (cut taglines, helper text and secondary labels, fix the layout that depends on them, simplify code), each with its gain for UX, DX and AX, checks whether each change would break something, and writes an implementation plan. Changes nothing until the user picks. Use when the user says "/polish", "polish this", "make it as clean as Linear", "simplify this screen", "what would you cut here?" or asks for a simplicity review.
+description: 'Simplicity review of an app, site, screen or codebase in the style of Linear or Apple Notes (simple purpose, simple architecture, simple design, simple implementation). Lists every change it would make (cut taglines, helper text and secondary labels, fix the layout that depends on them, simplify code), each with its gain for UX, DX and AX, checks whether each change would break anything, and writes an implementation plan. Changes nothing until the user picks. Use when the user says "/polish", "polish this", "make it as clean as Linear", "simplify this screen", "what would you cut here?" or asks for a simplicity review.'
 argument-hint: "[folder, file, URL or screen]"
+version: "0.1.7"
 metadata:
   author: Lucas Saldanha Werneck <lucas@2olhares.com>
+  tags: [review, simplicity, ux]
 ---
 
 # /polish: point, check, plan. Change only after the user picks.
+
+## Purpose
+
+Find what to cut or simplify in an app, site, screen or codebase, prove each change is safe, and hand the user a plan; nothing is changed until the user picks.
 
 ## Instructions
 
@@ -70,6 +76,22 @@ Didn't check? Write "not checked: <why>". Never mark a change safe by deduction.
 - If a test turns red or the screen got worse: undo the step and note it. Undo only that step: revert its own commit, or restore the files it touched from their backup; never `git checkout -- .`, `git reset --hard` or `git clean`, which also throw away work that is not the step's. Then skip every later step that depends on it, mark each one pending with the reason, and go on with the steps that don't.
 - When the steps are done, run the full test suite once more and compare it with the baseline. Anything worse than the baseline is not done: undo the step that caused it or report it as broken.
 - At the end: before/after screenshots, test results (real output), what was done, and what is still pending with the reason (or "nothing pending").
+
+## Prerequisites
+
+- Read access to the target (code, a running app or a URL). Screenshots and a test suite help but are optional.
+- A git repo is needed only for the branch-per-step plan.
+
+## Limitations
+
+- It changes nothing until the user picks the changes to apply.
+- A change it could not check is marked "not checked" with the reason; it is never called safe by deduction.
+- A change that makes UX, DX or AX worse goes under "discarded", not in the main list.
+
+## Troubleshooting
+
+- No test suite or the app cannot be run: write "not checked: <why>" for each affected change and say so in the report.
+- Error from a baseline test run: record it as the baseline before changing anything, so later failures can be compared.
 
 ## Examples
 
