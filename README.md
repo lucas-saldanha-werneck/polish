@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/github/license/lucas-saldanha-werneck/polish)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.7-blue)](CHANGELOG.md)
 [![polish score](https://img.shields.io/badge/skill%20score-98.8%20A-brightgreen)](https://github.com/NVIDIA/SkillEvaluator)
+[![plugin score (proposal)](https://img.shields.io/badge/plugin%20score%20(proposal)-98.8%20A-brightgreen)](https://github.com/NVIDIA/SkillEvaluator/issues/508)
 
 A Claude Code skill that reviews an app, site, screen or codebase for simplicity, in the style of
 Linear or Apple Notes, and changes nothing until you pick what to apply.
