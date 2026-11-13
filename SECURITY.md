@@ -13,5 +13,6 @@ Only the latest release is supported. Fixes land in a new release; older version
 ## What this plugin accesses
 
 - **What it is:** a skill, a set of instructions for Claude. It has no scripts and no hooks of its own.
-- **What Claude may do when you use it:** read the files of the target you name, run the project's own tests, and, only after you pick changes, edit files and make commits on a new branch `polish/<date>`. It changes nothing before your pick.
+- **Before your pick:** Claude reads the target's files, runs the app and its test suite to look at it and take screenshots (this runs the project's own code), and writes the report to its scratchpad (or shows it with an HTML report tool). It edits nothing in the target.
+- **After your pick:** Claude edits files and commits on a new branch `polish/<date>` (or backs up each file first outside git). With uncommitted changes in the target, it asks before committing or stashing them.
 - **Network and secrets:** the plugin adds none. A URL target is opened with Claude's own tools under your normal permissions.
