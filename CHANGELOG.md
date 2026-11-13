@@ -4,11 +4,12 @@ All notable changes to this plugin. Versions follow `.claude-plugin/plugin.json`
 
 ## 0.1.7 (2026-11-13)
 
-- Skill schema and score: version and tags, Purpose, Prerequisites, Limitations and Troubleshooting, no vague words in the description; add skill score badge.
+- Skill: version and tags, Purpose, Prerequisites, Limitations and Troubleshooting, no vague words in the description; skill score badge.
+- README: demo GIF and badges; add SECURITY.md and this CHANGELOG.
 
 ## 0.1.6 (2026-11-13)
 
-- Add author metadata, Instructions and Examples to SKILL.md.
+- Skill: add author metadata, Instructions and Examples sections (docs only).
 
 ## 0.1.5 (2026-11-12)
 
@@ -16,20 +17,20 @@ All notable changes to this plugin. Versions follow `.claude-plugin/plugin.json`
 
 ## 0.1.4 (2026-11-11)
 
-- Maintenance: point to the catalog repo's new name, lucas-tools.
+- Point to the catalog repo's new name, `lucas-tools`.
 
 ## 0.1.3 (2026-11-11)
 
-- Maintenance: rename the marketplace to lucas-tools.
+- Catalog renamed to `lucas-tools`.
 
 ## 0.1.2 (2026-11-09)
 
-- Docs: one-line description, catalog install, tests and license sections.
+- One-line description, catalog install steps, tests and license sections.
+- README credits; CI runs the tests on Linux, macOS and Windows.
 
 ## 0.1.1 (2026-11-08)
 
 - Dependency-aware rollback; the load test checks registration.
-- CI runs the tests on Linux, macOS and Windows; README credits.
 
 ## 0.1.0 (2026-11-08)
 
