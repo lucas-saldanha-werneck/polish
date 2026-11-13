@@ -1,5 +1,9 @@
 # polish
 
+[![CI](https://github.com/lucas-saldanha-werneck/polish/actions/workflows/test.yml/badge.svg)](https://github.com/lucas-saldanha-werneck/polish/actions/workflows/test.yml)
+[![License](https://img.shields.io/github/license/lucas-saldanha-werneck/polish)](LICENSE)
+[![Version](https://img.shields.io/badge/version-0.1.6-blue)](CHANGELOG.md)
+
 A Claude Code skill that reviews an app, site, screen or codebase for simplicity, in the style of
 Linear or Apple Notes, and changes nothing until you pick what to apply.
 
@@ -129,3 +133,7 @@ The review standard is a prompt by Vox ([@Voxyz_ai](https://x.com/Voxyz_ai/statu
 MIT. See [LICENSE](LICENSE).
 
 Built with Claude Code
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for what this plugin accesses and how to report a vulnerability.
