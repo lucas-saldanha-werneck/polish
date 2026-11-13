@@ -80,7 +80,7 @@ Didn't check? Write "not checked: <why>". Never mark a change safe by deduction.
 ## Prerequisites
 
 - Read access to the target (code, a running app or a URL). Screenshots and a test suite help but are optional.
-- A git repo is needed only for the branch-per-step plan.
+- Git is optional: in a git repo each step gets its own commit on a `polish/<date>` branch; otherwise each file is backed up before it is touched.
 
 ## Limitations
 
