@@ -2,9 +2,18 @@
 name: polish
 description: Simplicity review of an app, site, screen or codebase in the style of Linear or Apple Notes (simple purpose, simple architecture, simple design, simple implementation). Lists every change it would make (cut taglines, helper text and secondary labels, fix the layout that depends on them, simplify code), each with its gain for UX, DX and AX, checks whether each change would break something, and writes an implementation plan. Changes nothing until the user picks. Use when the user says "/polish", "polish this", "make it as clean as Linear", "simplify this screen", "what would you cut here?" or asks for a simplicity review.
 argument-hint: "[folder, file, URL or screen]"
+metadata:
+  author: Lucas Saldanha Werneck <lucas@2olhares.com>
 ---
 
 # /polish: point, check, plan. Change only after the user picks.
+
+## Instructions
+
+1. Understand the target and change nothing (read the code, run it, take screenshots).
+2. List every change across purpose, architecture, design and implementation, each with its UX / DX / AX gain and risk.
+3. Check each change for breakage and mark it safe, safe with adjustment, or breaks.
+4. Write the implementation plan and the report, ask what to apply, and stop. Implement only what the user picks.
 
 ## The standard
 
@@ -61,3 +70,9 @@ Didn't check? Write "not checked: <why>". Never mark a change safe by deduction.
 - If a test turns red or the screen got worse: undo the step and note it. Undo only that step: revert its own commit, or restore the files it touched from their backup; never `git checkout -- .`, `git reset --hard` or `git clean`, which also throw away work that is not the step's. Then skip every later step that depends on it, mark each one pending with the reason, and go on with the steps that don't.
 - When the steps are done, run the full test suite once more and compare it with the baseline. Anything worse than the baseline is not done: undo the step that caused it or report it as broken.
 - At the end: before/after screenshots, test results (real output), what was done, and what is still pending with the reason (or "nothing pending").
+
+## Examples
+
+- User: "/polish" in an app folder. Claude reads and runs the app, lists every change with its gain and risk, checks each one, writes the plan and asks what to apply.
+- User: "/polish https://example.com/pricing". Claude reviews that page the same way and changes nothing.
+- User: "simplify this screen", then "all safe". Claude implements only the changes marked safe, step by step, running the tests after each.
