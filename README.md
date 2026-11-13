@@ -7,6 +7,16 @@
 A Claude Code skill that reviews an app, site, screen or codebase for simplicity, in the style of
 Linear or Apple Notes, and changes nothing until you pick what to apply.
 
+[![polish demo: tap to open the video](https://github.com/user-attachments/assets/cda3321a-7d87-4e20-8b15-ec15ceb43913)](https://lucas-saldanha-werneck.github.io/polish/demo.mp4)
+
+<table>
+<tr>
+<td align="center"><img src="https://github.com/user-attachments/assets/02f3d348-69ec-46c9-9641-e9ee9f2cba55" alt="Every change is listed first" width="320"><br>Every change is listed first</td>
+<td align="center"><img src="https://github.com/user-attachments/assets/2e775f56-91cf-40b5-8f9b-f8201423e540" alt="You pick what to apply" width="320"><br>You pick what to apply</td>
+<td align="center"><img src="https://github.com/user-attachments/assets/01510b2f-c321-48ec-97e9-8e835f69d9de" alt="Only your picks are applied, tests pass" width="320"><br>Only your picks are applied, tests pass</td>
+</tr>
+</table>
+
 Ask a model to "clean up this page" and it starts editing at once: it cuts a label a test depends
 on, or renames something another tool reads. This skill splits the job in two. First it lists every
 change it would make and checks what each one would break. Then it stops and asks you. Only the
